@@ -2,11 +2,11 @@
 // which supports hot reloading and synchronized testing.
 
 // Require Browsersync along with webpack and middleware for it
-import browserSync from 'browser-sync';
-import webpack from 'webpack';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
-import createConfig from '../webpack/webpack.config';
+const browserSync = require("browser-sync");
+const webpack = require("webpack");
+const webpackDevMiddleware = require("webpack-dev-middleware");
+const webpackHotMiddleware = require("webpack-hot-middleware");
+const createConfig = require("../webpack/webpack.config");
 
 const config = createConfig();
 const bundler = webpack(config);
@@ -19,10 +19,9 @@ browserSync({
   },
   open: false,
   server: {
-    baseDir: 'src',
+    baseDir: "src",
 
     middleware: [
-
       webpackDevMiddleware(bundler, {
         // Dev middleware can't access config, so we provide publicPath
         publicPath: config.output.publicPath,
@@ -38,7 +37,7 @@ browserSync({
           timings: true,
           chunks: true,
           chunkModules: true
-        },
+        }
 
         // for other settings see
         // http://webpack.github.io/docs/webpack-dev-middleware.html
@@ -51,7 +50,5 @@ browserSync({
 
   // no need to watch '*.js' here, webpack will take care of it for us,
   // including full page reloads if HMR won't work
-  files: [
-    'src/*.html'
-  ]
+  files: ["src/*.html"]
 });

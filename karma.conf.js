@@ -8,7 +8,6 @@ module.exports = function (config) {
         basePath: '',
         files: [
             'node_modules/polyfill-function-prototype-bind/bind.js',
-            'node_modules/es6-promise/dist/es6-promise.js',
             'src/modules/grid-spec-helper/matchers.js',
             'webpack/test-entry.js'
         ],
